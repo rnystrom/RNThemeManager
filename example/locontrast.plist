@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>INHERITED_THEME</key>
+	<string>default</string>
+	<key>headerFontSize</key>
+	<string>12</string>
+	<key>backgroundColor</key>
+	<string>21c1cb</string>
+	<key>bodyTextColor</key>
+	<string>000000</string>
+	<key>buttonTextColor</key>
+	<string>000000</string>
+</dict>
+</plist>

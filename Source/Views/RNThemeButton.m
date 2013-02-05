@@ -57,7 +57,7 @@
     }
     
     if (self.textColorKey) {
-        self.titleLabel.textColor = [[RNThemeManager sharedManager] colorForKey:self.textColorKey];
+        [self setTitleColor:[[RNThemeManager sharedManager] colorForKey:self.textColorKey] forState:UIControlStateNormal];
     }
     
     if (self.backgroundImageKey) {

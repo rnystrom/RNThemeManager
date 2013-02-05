@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>INHERITED_THEME</key>
+	<string>default</string>
+	<key>buttonFontSize</key>
+	<string>20</string>
+	<key>buttonFont</key>
+	<string>GurmukhiMN</string>
+	<key>backgroundColor</key>
+	<string>ffffff</string>
+	<key>buttonTextColor</key>
+	<string>832b2b</string>
+</dict>
+</plist>

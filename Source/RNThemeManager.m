@@ -40,9 +40,7 @@ NSString * const RNThemeManagerDidChangeThemes = @"RNThemeManagerDidChangeThemes
             themeName = @"default";
         }
         
-        _currentThemeName = themeName;
-        NSString *path = [[NSBundle mainBundle] pathForResource:_currentThemeName ofType:@"plist"];
-        _styles = [NSDictionary dictionaryWithContentsOfFile:path];
+        [self changeTheme:themeName];
     }
     return self;
 }
@@ -54,12 +52,43 @@ NSString * const RNThemeManagerDidChangeThemes = @"RNThemeManagerDidChangeThemes
     [[NSNotificationCenter defaultCenter] postNotificationName:RNThemeManagerDidChangeThemes object:nil];
 }
 
+- (void)setCurrentThemeName:(NSString *)currentThemeName {
+    _currentThemeName = currentThemeName;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:currentThemeName forKey:@"com.whoisryannystrom.RNThemeManager.defaulttheme"];
+    [defaults synchronize];
+}
+
 #pragma mark - Actions
 
 - (void)changeTheme:(NSString *)themeName {
+    if ([themeName isEqualToString:self.currentThemeName]) {
+        return;
+    }
+    
     self.currentThemeName = themeName;
     NSString *path = [[NSBundle mainBundle] pathForResource:self.currentThemeName ofType:@"plist"];
-    self.styles = [NSDictionary dictionaryWithContentsOfFile:path];
+    NSDictionary *styles = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+    // if our theme inherits from another, merge
+    if (styles[@"INHERITED_THEME"] != nil) {
+        styles = [self inheritedThemeWithParentTheme:styles[@"INHERITED_THEME"] childTheme:styles];
+    }
+    
+    self.styles = styles;
+}
+
+- (NSDictionary *)inheritedThemeWithParentTheme:(NSString *)parentThemeName childTheme:(NSDictionary *)childTheme {
+    NSString *path = [[NSBundle mainBundle] pathForResource:parentThemeName ofType:@"plist"];
+    NSMutableDictionary *parent = [[NSDictionary dictionaryWithContentsOfFile:path] mutableCopy];
+    
+    // merge child into parent overriding parent values
+    [childTheme enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
+        parent[key] = obj;
+    }];
+    
+    return parent;
 }
 
 #pragma mark - Constants
