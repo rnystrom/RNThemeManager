@@ -2,15 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>primaryColor</key>
+	<string>9053fd</string>
+	<key>secondaryColor</key>
+	<string>eb6045</string>
 	<key>INHERITED_THEME</key>
 	<string>default</string>
-	<key>headerFontSize</key>
-	<string>12</string>
+	<key>buttonColor</key>
+	<string>463937</string>
+	<key>headerFont</key>
+	<string>Courier-Bold</string>
+	<key>bodyFontSize</key>
+	<string>20</string>
 	<key>backgroundColor</key>
-	<string>21c1cb</string>
-	<key>bodyTextColor</key>
-	<string>000000</string>
-	<key>buttonTextColor</key>
-	<string>000000</string>
+	<string>fbecc5</string>
 </dict>
 </plist>

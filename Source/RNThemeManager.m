@@ -97,19 +97,32 @@ NSString * const RNThemeManagerDidChangeThemes = @"RNThemeManagerDidChangeThemes
 
 - (UIFont *)fontForKey:(NSString*)key {
     NSString *sizeKey = [key stringByAppendingString:@"Size"];
-    return [UIFont fontWithName:self.styles[key] size:((NSNumber *)self.styles[sizeKey]).floatValue];
+    NSString *fontName = self.styles[key];
+    NSNumber *size = self.styles[sizeKey];
+    if (fontName && size) {
+        return [UIFont fontWithName:fontName size:size.floatValue];
+    }
+    return nil;
 }
 
 #pragma mark - Colors
 
 - (UIColor *)colorForKey:(NSString *)key {
-    return [UIColor colorWithHexString:self.styles[key]];
+    NSString *hexString = self.styles[key];
+    if (hexString) {
+        return [UIColor colorWithHexString:hexString];
+    }
+    return nil;
 }
 
 #pragma mark - Images
 
 - (UIImage *)imageForKey:(NSString *)key {
-    return [UIImage imageNamed:self.styles[key]];
+    NSString *imageName = self.styles[key];
+    if (imageName) {
+        return [UIImage imageNamed:imageName];
+    }
+    return nil;
 }
 
 @end

@@ -42,7 +42,7 @@
     [self applyTheme];
 }
 
-- (void)dealloc {
+- (void)dealloc {    
     @try {
         [[NSNotificationCenter defaultCenter] removeObserver:self];
     }
@@ -52,16 +52,25 @@
 }
 
 - (void)applyTheme {
-    if (self.fontKey) {
-        self.titleLabel.font = [[RNThemeManager sharedManager] fontForKey:self.fontKey];
+    UIFont *font = nil;
+    if (self.fontKey && (font = [[RNThemeManager sharedManager] fontForKey:self.fontKey])) {
+        self.titleLabel.font = font;
     }
-    
-    if (self.textColorKey) {
-        [self setTitleColor:[[RNThemeManager sharedManager] colorForKey:self.textColorKey] forState:UIControlStateNormal];
+    UIColor *textColor = nil;
+    if (self.textColorKey && (textColor = [[RNThemeManager sharedManager] colorForKey:self.textColorKey])) {
+        [self setTitleColor:textColor forState:UIControlStateNormal];
     }
-    
-    if (self.backgroundImageKey) {
-        [self setBackgroundImage:[[RNThemeManager sharedManager] imageForKey:self.backgroundImageKey] forState:UIControlStateNormal];
+    UIImage *backgroundImage = nil;
+    if (self.backgroundImageKey && (backgroundImage = [[RNThemeManager sharedManager] imageForKey:self.backgroundImageKey])) {
+        [self setBackgroundImage:backgroundImage forState:UIControlStateNormal];
+    }
+    UIColor *backgroundColor = nil;
+    if (self.backgroundColorKey && (backgroundColor = [[RNThemeManager sharedManager] colorForKey:self.backgroundColorKey])) {
+        self.backgroundColor = backgroundColor;
+    }
+    UIColor *selectedTextColor = nil;
+    if (self.highlightedTextColorKey && (selectedTextColor = [[RNThemeManager sharedManager] colorForKey:self.highlightedTextColorKey])) {
+        [self setTitleColor:selectedTextColor forState:UIControlStateHighlighted];
     }
 }
 

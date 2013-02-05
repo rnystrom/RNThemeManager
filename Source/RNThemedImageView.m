@@ -52,8 +52,9 @@
 }
 
 - (void)applyTheme {
-    if (self.imageKey) {
-        self.image = [[RNThemeManager sharedManager] imageForKey:self.imageKey];
+    UIImage *image = nil;
+    if (self.imageKey && (image = [[RNThemeManager sharedManager] imageForKey:self.imageKey])) {
+        self.image = image;
     }
 }
 

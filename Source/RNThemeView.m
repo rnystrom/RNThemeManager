@@ -52,8 +52,9 @@
 }
 
 - (void)applyTheme {
-    if (self.backgroundColorKey) {
-        self.backgroundColor = [[RNThemeManager sharedManager] colorForKey:self.backgroundColorKey];
+    UIColor *backgroundColor = nil;
+    if (self.backgroundColorKey && (backgroundColor = [[RNThemeManager sharedManager] colorForKey:self.backgroundColorKey])) {
+        self.backgroundColor = backgroundColor;
     }
 }
 

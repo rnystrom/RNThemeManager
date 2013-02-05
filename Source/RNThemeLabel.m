@@ -52,16 +52,17 @@
 }
 
 - (void)applyTheme {
-    if (self.fontKey) {
-        self.font = [[RNThemeManager sharedManager] fontForKey:self.fontKey];
+    UIFont *font = nil;
+    if (self.fontKey && (font = [[RNThemeManager sharedManager] fontForKey:self.fontKey])) {
+        self.font = font;
     }
-    
-    if (self.textColorKey) {
-        self.textColor = [[RNThemeManager sharedManager] colorForKey:self.textColorKey];
+    UIColor *textColor = nil;
+    if (self.textColorKey && (textColor = [[RNThemeManager sharedManager] colorForKey:self.textColorKey])) {
+        self.textColor = textColor;
     }
-    
-    if (self.backgroundColorKey) {
-        self.backgroundColor = [[RNThemeManager sharedManager] colorForKey:self.backgroundColorKey];
+    UIColor *backgroundColor = nil;
+    if (self.backgroundColorKey && (backgroundColor = [[RNThemeManager sharedManager] colorForKey:self.backgroundColorKey])) {
+        self.backgroundColor = backgroundColor;
     }
 }
 

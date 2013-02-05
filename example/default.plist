@@ -3,24 +3,32 @@
 <plist version="1.0">
 <dict>
 	<key>bodyFont</key>
-	<string>HelveticaNeue</string>
+	<string>AppleSDGothicNeo-Medium</string>
 	<key>bodyFontSize</key>
 	<string>17</string>
 	<key>headerFont</key>
-	<string>HelveticaNeue-Bold</string>
+	<string>ArialRoundedMTBold</string>
 	<key>headerFontSize</key>
 	<string>30</string>
 	<key>bodyTextColor</key>
-	<string>bbbbbb</string>
+	<string>505050</string>
 	<key>backgroundColor</key>
-	<string>db3a3a</string>
+	<string>f0efec</string>
 	<key>buttonFont</key>
-	<string>Avenir-Black</string>
+	<string>ArialRoundedMTBold</string>
 	<key>buttonFontSize</key>
 	<string>20</string>
 	<key>buttonTextColor</key>
-	<string>faf3a5</string>
+	<string>505050</string>
 	<key>headerColor</key>
-	<string>030303</string>
+	<string>505050</string>
+	<key>highlightColor</key>
+	<string>selectedTextColorKey</string>
+	<key>primaryColor</key>
+	<string>35a2fb</string>
+	<key>secondaryColor</key>
+	<string>ea3f34</string>
+	<key>buttonSelectedTextColor</key>
+	<string>ffffff</string>
 </dict>
 </plist>
