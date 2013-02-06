@@ -36,7 +36,7 @@ Then when assigning a font key to a label (or any other view with text), the siz
 
 ## Colors
 
-Colors are fairly simple. Just use a hexidecimal color code for the key value.
+Colors are fairly simple. Just use a hexidecimal color code for the key value. There is no need to prefix with <code>#</code>.
 
 ## Theming with NIBs
 
@@ -58,7 +58,9 @@ Sorry if that's a little confusing. Here are some pictures.
 
 ## Theming with Code
 
-## Multiple Themes
+// TODO
+
+## Using Multiple Themes
 
 To change the active theme, just call the following method:
 
@@ -66,7 +68,42 @@ To change the active theme, just call the following method:
 [[RNThemeManager sharedManager] changeTheme:@"lowcontrast"];
 ```
 
-All 
+Just make sure you have a plist with whatever theme name you provide.
+
+## Updating Views
+
+All <code>RNTheme*</code> subclasses subscribe to notifications when a theme is changed and conform to a custom protocol (that only exists for semantics) called <code>RNThemeUpdateProtocol</code>.
+
+If you wish not to use any of the <code>RNTheme*</code> views (and you certainly do not need to), you can update your views or even view controllers by listening for the following notification:
+
+``` objective-c
+RNThemeManagerDidChangeThemes
+```
+
+When that notification is sent, the theme file has been changed and all views that are styled with a theme should be updated. An example of <code>RNThemeTextField</code> shows you how I prefer to update my views:
+
+``` objective-c
+// Somewhere in an -init or -viewDidLoad
+[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(themeDidChangeNotification:) name:RNThemeManagerDidChangeThemes object:nil];
+
+// ...
+
+- (void)themeDidChangeNotification:(NSNotification *)notification {
+    [self applyTheme];
+}
+
+// Note: This is the required method of the RNThemeUpdateProtocol protocol 
+- (void)applyTheme {
+    UIFont *font = nil;
+    if (self.fontKey && (font = [[RNThemeManager sharedManager] fontForKey:self.fontKey])) {
+        self.font = font;
+    }
+    UIColor *textColor = nil;
+    if (self.textColorKey && (textColor = [[RNThemeManager sharedManager] colorForKey:self.textColorKey])) {
+        self.textColor = textColor;
+    }
+}
+```
 
 ## Contact
 
