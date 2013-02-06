@@ -25,7 +25,7 @@ You can include custom fonts in your project and use them in your themes just as
 
 #### Font Sizes
 
-RNThemeManager automatically builds your font and size based on the keyword for the font. Each font name should be accompanied by a font size key that is the **font name suffixed with "Size"**. For example:
+RNThemeManager automatically builds your font and size based on the keyword for the font. Each font name must be accompanied by a font size key that is the **font name suffixed with "Size"**. For example:
 
 ``` objective-c
 headerFont : ArialRoundedMTBold
@@ -51,6 +51,22 @@ Sorry if that's a little confusing. Here are some pictures.
 #### default.plist
 
 <img src="https://raw.github.com/rnystrom/RNThemeManager/master/images/plist.png" />
+
+#### RNThemeButton.h
+
+``` objective-c
+@interface RNThemeButton : UIButton
+<RNThemeUpdateProtocol>
+
+// available theme keys
+@property (nonatomic, strong) NSString *backgroundImageKey;
+@property (nonatomic, strong) NSString *backgroundColorKey;
+@property (nonatomic, strong) NSString *fontKey;
+@property (nonatomic, strong) NSString *textColorKey;
+@property (nonatomic, strong) NSString *highlightedTextColorKey;
+
+@end
+```
 
 #### MainStoryboard.storyboard
 
