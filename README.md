@@ -84,6 +84,7 @@ When that notification is sent, the theme file has been changed and all views th
 
 ``` objective-c
 // Somewhere in an -init or -viewDidLoad
+// Make sure you remove the observer!
 [[NSNotificationCenter defaultCenter] addObserver:self 
                                          selector:@selector(themeDidChangeNotification:) 
                                              name:RNThemeManagerDidChangeThemes 
