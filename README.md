@@ -9,7 +9,7 @@ I also wanted to create a library that could be used by people that aren't app d
 
 ## Installation
 
-The preferred method of installation is with [Cocoapods](http://cocoapods.org).
+~~The preferred method of installation is with [Cocoapods](http://cocoapods.org).~~ The project will be added to the pods repo once I feel it is distribution-worthy.
 
 If you do not wish to use Cocoapods (and you really should), you can manually install RNThemeManager by just dragging and dropping all of the source files into your project. There are no framework dependencies.
 
