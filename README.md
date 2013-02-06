@@ -1,7 +1,7 @@
 RNThemeManager
 =====
 
-*WARNING: I noticed this garnered a little attention. This is still **very much** a work in progress.**
+*WARNING: I noticed this garnered a little attention. This is still **very much** a work in progress.*
 
 This small utility makes theming your iOS apps clean and simple. It was originally created so that I could have themable NIBs that utilized notifications to update view properties such as fonts and colors. I pushed beyond NIB support so that however you create your views, it will respond to your themes.
 
