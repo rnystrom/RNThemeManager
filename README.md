@@ -1,6 +1,8 @@
 RNThemeManager
 =====
 
+*WARNING: I noticed this garnered a little attention. This is still **very much** a work in progress.**
+
 This small utility makes theming your iOS apps clean and simple. It was originally created so that I could have themable NIBs that utilized notifications to update view properties such as fonts and colors. I pushed beyond NIB support so that however you create your views, it will respond to your themes.
 
 I also wanted to create a library that could be used by people that aren't app developers, i.e. designers. As long as someone has Xcode installed, they can easily make edits to your theme Plists without slowing down the development process.
@@ -46,15 +48,25 @@ There are three steps to applying themes within NIBs. All of this is done in the
 
 Sorry if that's a little confusing. Here are some pictures.
 
-#### Plist
+#### default.plist
 
 <img src="https://raw.github.com/rnystrom/RNThemeManager/master/images/plist.png" />
 
-#### NIB
+#### MainStoryboard.storyboard
 
 <img src="https://raw.github.com/rnystrom/RNThemeManager/master/images/keypaths.png" />
 
 ## Theming with Code
+
+## Multiple Themes
+
+To change the active theme, just call the following method:
+
+``` objective-c
+[[RNThemeManager sharedManager] changeTheme:@"lowcontrast"];
+```
+
+All 
 
 ## Contact
 
