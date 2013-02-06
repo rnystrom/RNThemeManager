@@ -48,7 +48,11 @@ Sorry if that's a little confusing. Here are some pictures.
 
 #### Plist
 
+<img src="https://raw.github.com/rnystrom/RNThemeManager/master/images/plist.png" />
+
 #### NIB
+
+<img src="https://raw.github.com/rnystrom/RNThemeManager/master/images/keypaths.png" />
 
 ## Theming with Code
 
