@@ -13,6 +13,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+#warning Can we get rid of this?
     [RNThemeManager sharedManager];
     // Override point for customization after application launch.
     return YES;

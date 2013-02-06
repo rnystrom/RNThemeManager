@@ -2,10 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>buttonTextColor</key>
-	<string>ffffff</string>
 	<key>INHERITED_THEME</key>
 	<string>default</string>
+	<key>buttonTextColor</key>
+	<string>ffffff</string>
 	<key>backgroundColor</key>
 	<string>313131</string>
 	<key>primaryColor</key>

@@ -2,12 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>INHERITED_THEME</key>
+	<string>default</string>
 	<key>primaryColor</key>
 	<string>9053fd</string>
 	<key>secondaryColor</key>
 	<string>eb6045</string>
-	<key>INHERITED_THEME</key>
-	<string>default</string>
 	<key>buttonColor</key>
 	<string>463937</string>
 	<key>headerFont</key>
