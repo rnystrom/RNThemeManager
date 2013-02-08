@@ -97,6 +97,8 @@ NSString * const RNThemeManagerDidChangeThemes = @"RNThemeManagerDidChangeThemes
 
 - (UIFont *)fontForKey:(NSString*)key {
     NSString *sizeKey = [key stringByAppendingString:@"Size"];
+    // TODO:
+    // check if value is another key
     NSString *fontName = self.styles[key];
     NSNumber *size = self.styles[sizeKey];
     if (fontName && size) {
@@ -108,6 +110,8 @@ NSString * const RNThemeManagerDidChangeThemes = @"RNThemeManagerDidChangeThemes
 #pragma mark - Colors
 
 - (UIColor *)colorForKey:(NSString *)key {
+    // TODO:
+    // check if value is another key
     NSString *hexString = self.styles[key];
     if (hexString) {
         return [UIColor colorWithHexString:hexString];
@@ -118,6 +122,8 @@ NSString * const RNThemeManagerDidChangeThemes = @"RNThemeManagerDidChangeThemes
 #pragma mark - Images
 
 - (UIImage *)imageForKey:(NSString *)key {
+    // TODO:
+    // check if value is another key
     NSString *imageName = self.styles[key];
     if (imageName) {
         return [UIImage imageNamed:imageName];
