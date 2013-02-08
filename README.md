@@ -34,9 +34,36 @@ headerFontSize : 24
 
 Then when assigning a font key to a label (or any other view with text), the size will be automatically assigned.
 
+``` objective-c
+- (UIFont *)fontForKey:(NSString*)key;
+```
+
 ## Colors
 
 Colors are fairly simple. Just use a hexidecimal color code for the key value. There is no need to prefix with <code>#</code>.
+
+``` objective-c
+- (UIImage *)imageForKey:(NSString *)key;
+```
+
+## Images
+
+Just like <code>[UIImage imageNamed:@"name"]</code>, simply assign the image name of your asset as the value for an image key.
+
+``` objective-c
+- (UIImage *)imageForKey:(NSString *)key;
+```
+
+## Linking theme values
+
+If you would like to use a single value as multiple keys you may, just set the value of a key to another key.
+
+```
+headerFont : Helvetica
+headerFontSize : 20
+//...
+cellHeaderFontSize : headerFontSize
+```
 
 ## Theming with NIBs
 
