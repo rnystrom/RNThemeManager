@@ -48,8 +48,11 @@ NSString * const RNThemeManagerDidChangeThemes = @"RNThemeManagerDidChangeThemes
 #pragma mark - Setters
 
 - (void)setStyles:(NSDictionary *)styles {
+    BOOL isFirst = _styles == nil;
     _styles = styles;
-    [[NSNotificationCenter defaultCenter] postNotificationName:RNThemeManagerDidChangeThemes object:nil];
+    if (! isFirst) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:RNThemeManagerDidChangeThemes object:nil];
+    }
 }
 
 - (void)setCurrentThemeName:(NSString *)currentThemeName {
@@ -97,10 +100,18 @@ NSString * const RNThemeManagerDidChangeThemes = @"RNThemeManagerDidChangeThemes
 
 - (UIFont *)fontForKey:(NSString*)key {
     NSString *sizeKey = [key stringByAppendingString:@"Size"];
-    // TODO:
-    // check if value is another key
+    
     NSString *fontName = self.styles[key];
-    NSNumber *size = self.styles[sizeKey];
+    NSString *size = self.styles[sizeKey];
+    
+    while (self.styles[fontName]) {
+        fontName = self.styles[fontName];
+    }
+    
+    while (self.styles[size]) {
+        size = self.styles[size];
+    }
+    
     if (fontName && size) {
         return [UIFont fontWithName:fontName size:size.floatValue];
     }
@@ -110,9 +121,12 @@ NSString * const RNThemeManagerDidChangeThemes = @"RNThemeManagerDidChangeThemes
 #pragma mark - Colors
 
 - (UIColor *)colorForKey:(NSString *)key {
-    // TODO:
-    // check if value is another key
     NSString *hexString = self.styles[key];
+    
+    while (self.styles[hexString]) {
+        hexString = self.styles[hexString];
+    }
+    
     if (hexString) {
         return [UIColor colorWithHexString:hexString];
     }
@@ -122,9 +136,12 @@ NSString * const RNThemeManagerDidChangeThemes = @"RNThemeManagerDidChangeThemes
 #pragma mark - Images
 
 - (UIImage *)imageForKey:(NSString *)key {
-    // TODO:
-    // check if value is another key
     NSString *imageName = self.styles[key];
+    
+    while (self.styles[imageName]) {
+        imageName = self.styles[imageName];
+    }
+    
     if (imageName) {
         return [UIImage imageNamed:imageName];
     }
