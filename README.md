@@ -1,15 +1,17 @@
 RNThemeManager
 =====
 
-*WARNING: I noticed this garnered a little attention. This is still very much a work in progress.*
-
 This small utility makes theming your iOS apps clean and simple. It was originally created so that I could have themable NIBs that utilized notifications to update view properties such as fonts and colors. I pushed beyond NIB support so that however you create your views, it will respond to your themes.
 
 I also wanted to create a library that could be used by people that aren't app developers, i.e. designers. As long as someone has Xcode installed, they can easily make edits to your theme Plists without slowing down the development process.
 
 ## Installation
 
-~~The preferred method of installation is with [Cocoapods](http://cocoapods.org).~~ The project will be added to the pods repo once I feel it is distribution-worthy.
+#### Cocoapods
+
+**Version 0.1**
+
+~~The preferred method of installation is with [Cocoapods](http://cocoapods.org).~~ The project is being submitted to the pods repo as we speak. I will update the readme as soon as its ready.
 
 If you do not wish to use Cocoapods (and you really should), you can manually install RNThemeManager by just dragging and dropping all of the source files into your project. There are no framework dependencies.
 
@@ -54,15 +56,20 @@ Just like <code>[UIImage imageNamed:@"name"]</code>, simply assign the image nam
 - (UIImage *)imageForKey:(NSString *)key;
 ```
 
-## Linking theme values
+## Inheriting theme values
 
 If you would like to use a single value as multiple keys you may, just set the value of a key to another key.
 
 ```
 headerFont : Helvetica
 headerFontSize : 20
-//...
+backgroundColor : ffffff
+redColor : d81417
+headerColor : backgroundColor
+headerButtonColor : headerColor
 cellHeaderFontSize : headerFontSize
+buttonBackgroundColor : redColor
+// etc
 ```
 
 ## Theming with NIBs
@@ -101,7 +108,24 @@ Sorry if that's a little confusing. Here are some pictures.
 
 ## Theming with Code
 
-// TODO
+``` objective-c
+// in -viewDidLoad (remember to removeObserver in -dealloc)
+[[NSNotificationCenter defaultCenter] addObserver:self action:@selector(applyTheme) withObject:nil];
+
+// in -viewWillAppear (or where you do your layout bits)
+[self applyTheme];
+
+- (void)applyTheme {
+    // these objects do _not_ need to be RNTheme* classes/subclasses
+    self.view.backgroundColor = [[RNThemeManager sharedManager] colorForKey:@"backgroundColor"];
+    self.textField.font = [[RNThemeManager sharedManager] fontForKey:@"textFieldFont"];
+
+    // example of custom theming
+    self.textField.layer.cornerRadius = [RNThemeManager sharedManager].styles[@"cornerRadius"].floatValue;
+}
+```
+
+Now whenever your theme file is changed the ViewController will automatically restyle your views based on your theme's setup.
 
 ## Using Multiple Themes
 
