@@ -9,9 +9,7 @@ I also wanted to create a library that could be used by people that aren't app d
 
 #### Cocoapods
 
-**Version 0.1**
-
-~~The preferred method of installation is with [Cocoapods](http://cocoapods.org).~~ The project is being submitted to the pods repo as we speak. I will update the readme as soon as its ready.
+The preferred method of installation is with [Cocoapods](http://cocoapods.org). The latest version is 0.1.0.
 
 If you do not wish to use Cocoapods (and you really should), you can manually install RNThemeManager by just dragging and dropping all of the source files into your project. There are no framework dependencies.
 
@@ -109,6 +107,10 @@ Sorry if that's a little confusing. Here are some pictures.
 ## Theming with Code
 
 ``` objective-c
+// optional: conform your View or ViewController to provided protocol
+@interface MYViewController : UIViewController
+<RNThemeUpdateProtocol>
+
 // in -viewDidLoad (remember to removeObserver in -dealloc)
 [[NSNotificationCenter defaultCenter] addObserver:self action:@selector(applyTheme) withObject:nil];
 
@@ -147,34 +149,7 @@ If you wish not to use any of the <code>RNTheme*</code> views (and you certainly
 RNThemeManagerDidChangeThemes
 ```
 
-When that notification is sent, the theme file has been changed and all views that are styled with a theme should be updated. An example of <code>RNThemeTextField</code> shows you how I prefer to update my views:
-
-``` objective-c
-// Somewhere in an -init or -viewDidLoad
-// Make sure you remove the observer!
-[[NSNotificationCenter defaultCenter] addObserver:self 
-                                         selector:@selector(themeDidChangeNotification:) 
-                                             name:RNThemeManagerDidChangeThemes 
-                                           object:nil];
-
-// ...
-
-- (void)themeDidChangeNotification:(NSNotification *)notification {
-    [self applyTheme];
-}
-
-// Note: This is the required method of the RNThemeUpdateProtocol protocol 
-- (void)applyTheme {
-    UIFont *font = nil;
-    if (self.fontKey && (font = [[RNThemeManager sharedManager] fontForKey:self.fontKey])) {
-        self.font = font;
-    }
-    UIColor *textColor = nil;
-    if (self.textColorKey && (textColor = [[RNThemeManager sharedManager] colorForKey:self.textColorKey])) {
-        self.textColor = textColor;
-    }
-}
-```
+See the above example of [Theming With Code](https://github.com/rnystrom/RNThemeManager#theming-with-code) for how to implement.
 
 ## Contact
 
