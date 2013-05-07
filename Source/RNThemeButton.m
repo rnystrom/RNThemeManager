@@ -72,6 +72,14 @@
     if (self.highlightedTextColorKey && (selectedTextColor = [[RNThemeManager sharedManager] colorForKey:self.highlightedTextColorKey])) {
         [self setTitleColor:selectedTextColor forState:UIControlStateHighlighted];
     }
+    CGSize shadowOffset = CGSizeZero;
+    if (self.textShadowOffsetKey && !CGSizeEqualToSize((shadowOffset = [[RNThemeManager sharedManager] sizeForKey:self.textShadowOffsetKey]), CGSizeZero)) {
+        self.titleLabel.shadowOffset = shadowOffset;
+    }
+    UIColor *shadowColor = nil;
+    if (self.textShadowColorKey && (shadowColor = [[RNThemeManager sharedManager] colorForKey:self.textShadowColorKey])) {
+        [self setTitleShadowColor:shadowColor forState:UIControlStateNormal];
+    }
 }
 
 - (void)themeDidChangeNotification:(NSNotification *)notification {

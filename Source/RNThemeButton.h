@@ -17,5 +17,6 @@
 @property (nonatomic, strong) NSString *fontKey;
 @property (nonatomic, strong) NSString *textColorKey;
 @property (nonatomic, strong) NSString *highlightedTextColorKey;
-
+@property (nonatomic, strong) NSString *textShadowOffsetKey;
+@property (nonatomic, strong) NSString *textShadowColorKey;
 @end

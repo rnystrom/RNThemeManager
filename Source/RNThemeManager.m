@@ -137,15 +137,51 @@ NSString * const RNThemeManagerDidChangeThemes = @"RNThemeManagerDidChangeThemes
 
 - (UIImage *)imageForKey:(NSString *)key {
     NSString *imageName = self.styles[key];
-    
+
     while (self.styles[imageName]) {
         imageName = self.styles[imageName];
     }
     
     if (imageName) {
-        return [UIImage imageNamed:imageName];
+        UIImage *image = [UIImage imageNamed:imageName];
+        
+        UIEdgeInsets capInsets = [self edgeInsetsForKey:[key stringByAppendingString:@"CapInsets"]];
+        
+        if (image && !UIEdgeInsetsEqualToEdgeInsets(capInsets, UIEdgeInsetsZero)) {
+            image = [image resizableImageWithCapInsets:capInsets];
+        }
+        
+        return image;
     }
     return nil;
+}
+
+#pragma mark - Geometry
+
+- (UIEdgeInsets)edgeInsetsForKey:(NSString *)key {
+    NSString *edgeInsetsString = self.styles[key];
+    
+    while (self.styles[edgeInsetsString]) {
+        edgeInsetsString = self.styles[edgeInsetsString];
+    }
+    
+    if (edgeInsetsString) {
+        return UIEdgeInsetsFromString(edgeInsetsString);
+    }
+    return UIEdgeInsetsZero;
+}
+
+- (CGSize)sizeForKey:(NSString *)key {
+    NSString *sizeString = self.styles[key];
+    
+    while (self.styles[sizeString]) {
+        sizeString = self.styles[sizeString];
+    }
+    
+    if (sizeString) {
+        return CGSizeFromString(sizeString);
+    }
+    return CGSizeZero;
 }
 
 @end

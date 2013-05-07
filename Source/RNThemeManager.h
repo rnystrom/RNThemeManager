@@ -31,6 +31,12 @@ extern NSString * const RNThemeManagerDidChangeThemes;
 // Return a UIImage for an image name stored in theme file
 - (UIImage *)imageForKey:(NSString *)key;
 
+// Return a UIEdgeInsets from a formatter string (e.g. @"{0, 12, 0, 12}" in theme file
+- (UIEdgeInsets)edgeInsetsForKey:(NSString *)key;
+
+// Return a CGSize from a formatted string (e.g. @"{3, 5}") in theme file
+- (CGSize)sizeForKey:(NSString *)key;
+
 // Change the theme name, should not include .plist extension
 - (void)changeTheme:(NSString *)themeName;
 
