@@ -78,7 +78,7 @@
     }
     UIColor *shadowColor = nil;
     if (self.textShadowColorKey && (shadowColor = [[RNThemeManager sharedManager] colorForKey:self.textShadowColorKey])) {
-        self.titleLabel.shadowColor = shadowColor;
+        [self setTitleShadowColor:shadowColor forState:UIControlStateNormal];
     }
 }
 
