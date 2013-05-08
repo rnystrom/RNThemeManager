@@ -49,8 +49,6 @@
     @catch (NSException *exception) {
         // do nothing, only unregistering self from notifications
     }
-    
-    [super dealloc];
 }
 
 - (void)applyTheme {
