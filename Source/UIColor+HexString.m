@@ -23,7 +23,7 @@
 }
 
 // Returns a UIColor by scanning the string for a hex number and passing that to +[UIColor colorWithRGBHex:]
-// Skips any leading whitespace and ignores any trailing characters
+// Skips any '#' characters that happen to be within hexString
 + (UIColor *)colorWithHexString:(NSString *)hexString
 {
 	NSScanner *scanner = [NSScanner scannerWithString:hexString];
