@@ -153,7 +153,7 @@ See the above example of [Theming With Code](https://github.com/rnystrom/RNTheme
 
 ## Contact
 
-* [@nystrorm](https://twitter.com/nystrorm) on Twitter
+* [@nystrorm](https://twitter.com/_ryannystrom) on Twitter
 * [@rnystrom](https://github.com/rnystrom) on Github
 * <a href="mailTo:rnystrom@whoisryannystrom.com">rnystrom [at] whoisryannystrom [dot] com</a>
 
