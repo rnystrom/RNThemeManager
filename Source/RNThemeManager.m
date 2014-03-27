@@ -102,18 +102,16 @@ NSString * const RNThemeManagerDidChangeThemes = @"RNThemeManagerDidChangeThemes
     NSString *sizeKey = [key stringByAppendingString:@"Size"];
     
     NSString *fontName = self.styles[key];
-    NSString *size = self.styles[sizeKey];
+    
+    // get the font size, using default if not supplied
+    CGFloat size = [self floatForKey:sizeKey defaultValue:[UIFont systemFontSize]];
     
     while (self.styles[fontName]) {
         fontName = self.styles[fontName];
     }
     
-    while (self.styles[size]) {
-        size = self.styles[size];
-    }
-    
-    if (fontName && size) {
-        return [UIFont fontWithName:fontName size:size.floatValue];
+    if (fontName) {
+        return [UIFont fontWithName:fontName size:size];
     }
     return nil;
 }
@@ -146,6 +144,53 @@ NSString * const RNThemeManagerDidChangeThemes = @"RNThemeManagerDidChangeThemes
         return [UIImage imageNamed:imageName];
     }
     return nil;
+}
+
+#pragma mark - Number
+
+- (int)intForKey:(NSString *)key defaultValue:(int)defaultValue
+{
+    NSString *num = self.styles[key];
+    
+    while (self.styles[num]) {
+        num = self.styles[num];
+    }
+    
+    if (num) {
+        return num.intValue;
+    }
+    
+    return defaultValue;
+}
+
+- (float)floatForKey:(NSString *)key defaultValue:(float)defaultValue
+{
+    NSString *num = self.styles[key];
+    
+    while (self.styles[num]) {
+        num = self.styles[num];
+    }
+    
+    if (num) {
+        return num.floatValue;
+    }
+    
+    return defaultValue;
+}
+
+- (BOOL)boolForKey:(NSString *)key defaultValue:(BOOL)defaultValue
+{
+    NSString *num = self.styles[key];
+    
+    while (self.styles[num]) {
+        num = self.styles[num];
+    }
+    
+    if (num) {
+        return num.boolValue;
+    }
+    
+    return defaultValue;
 }
 
 @end
