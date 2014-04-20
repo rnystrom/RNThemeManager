@@ -64,7 +64,7 @@
         }
         
         if (font) {
-            self.font = font;
+            self.titleLabel.font = font;
         }
     }
     
