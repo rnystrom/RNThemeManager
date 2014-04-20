@@ -100,15 +100,24 @@ NSString * const RNThemeManagerDidChangeThemes = @"RNThemeManagerDidChangeThemes
 
 - (UIFont *)fontForKey:(NSString*)key {
     NSString *sizeKey = [key stringByAppendingString:@"Size"];
-    return [self fontForKey:key sizeKey:sizeKey];
-}
-
-- (UIFont *)fontForKey:(NSString *)key sizeKey:(NSString *)sizeKey
-{
     NSString *fontName = self.styles[key];
     
     // get the font size, using default if not supplied
     CGFloat size = [self floatForKey:sizeKey defaultValue:[UIFont systemFontSize]];
+    
+    while (self.styles[fontName]) {
+        fontName = self.styles[fontName];
+    }
+    
+    if (fontName) {
+        return [UIFont fontWithName:fontName size:size];
+    }
+    return nil;
+}
+
+- (UIFont *)fontForKey:(NSString *)key size:(CGFloat)size
+{
+    NSString *fontName = self.styles[key];
     
     while (self.styles[fontName]) {
         fontName = self.styles[fontName];

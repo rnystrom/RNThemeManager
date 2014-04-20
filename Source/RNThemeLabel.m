@@ -55,10 +55,11 @@
     UIFont *font = nil;
     
     if (self.fontKey) {
-        // has the fontSizeKey override be provided?
-        if (self.fontSizeKey) {
-            font = [[RNThemeManager sharedManager] fontForKey:self.fontKey sizeKey:fontSizeKey];
-        } else {
+        // has the fontSize override been provided?
+        if (self.fontSize) {
+            font = [[RNThemeManager sharedManager] fontForKey:self.fontKey size:[fontSize floatValue]];
+        }
+        else {
             font = [[RNThemeManager sharedManager] fontForKey:self.fontKey]
         }
         
