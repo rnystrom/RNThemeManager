@@ -26,8 +26,8 @@ extern NSString * const RNThemeManagerDidChangeThemes;
 // If the size key is not specified, the system default will be assumed
 - (UIFont *)fontForKey:(NSString*)key;
 
-// Allows the font size key to be provided separately to the font key
-- (UIFont *)fontForKey:(NSString *)key sizeKey:(NSString *)sizeKey;
+// Allows the font size to be provided separately rather than using the themed style
+- (UIFont *)fontForKey:(NSString *)key size:(CGFloat)size;
 
 // Return a UIColor from a hex color stored in theme file
 - (UIColor *)colorForKey:(NSString *)key;
