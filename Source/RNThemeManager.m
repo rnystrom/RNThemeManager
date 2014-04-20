@@ -100,7 +100,11 @@ NSString * const RNThemeManagerDidChangeThemes = @"RNThemeManagerDidChangeThemes
 
 - (UIFont *)fontForKey:(NSString*)key {
     NSString *sizeKey = [key stringByAppendingString:@"Size"];
-    
+    return [self fontForKey:key sizeKey:sizeKey];
+}
+
+- (UIFont *)fontForKey:(NSString *)key sizeKey:(NSString *)sizeKey
+{
     NSString *fontName = self.styles[key];
     
     // get the font size, using default if not supplied

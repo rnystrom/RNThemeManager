@@ -53,9 +53,20 @@
 
 - (void)applyTheme {
     UIFont *font = nil;
-    if (self.fontKey && (font = [[RNThemeManager sharedManager] fontForKey:self.fontKey])) {
-        self.font = font;
+    
+    if (self.fontKey) {
+        // has the fontSizeKey override be provided?
+        if (self.fontSizeKey) {
+            font = [[RNThemeManager sharedManager] fontForKey:self.fontKey sizeKey:fontSizeKey];
+        } else {
+            font = [[RNThemeManager sharedManager] fontForKey:self.fontKey]
+        }
+        
+        if (font) {
+            self.font = font;
+        }
     }
+    
     UIColor *textColor = nil;
     if (self.textColorKey && (textColor = [[RNThemeManager sharedManager] colorForKey:self.textColorKey])) {
         self.textColor = textColor;
