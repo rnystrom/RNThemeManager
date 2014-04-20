@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RNThemeManager"
-  s.version      = "0.1.0"
+  s.version      = "0.2.0"
   s.summary      = "Easily manage themes and respond to theme changes by updating views in real time."
   s.homepage     = "https://github.com/rnystrom/RNThemeManager"
   s.license      = 'MIT'

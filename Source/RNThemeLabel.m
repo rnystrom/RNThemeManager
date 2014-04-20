@@ -53,12 +53,28 @@
 
 - (void)applyTheme {
     UIFont *font = nil;
-    if (self.fontKey && (font = [[RNThemeManager sharedManager] fontForKey:self.fontKey])) {
-        self.font = font;
+    
+    if (self.fontKey) {
+        // has the fontSize override been provided?
+        if (self.fontSize) {
+            font = [[RNThemeManager sharedManager] fontForKey:self.fontKey size:[self.fontSize floatValue]];
+        }
+        else {
+            font = [[RNThemeManager sharedManager] fontForKey:self.fontKey];
+        }
+        
+        if (font) {
+            self.font = font;
+        }
     }
+    
     UIColor *textColor = nil;
     if (self.textColorKey && (textColor = [[RNThemeManager sharedManager] colorForKey:self.textColorKey])) {
         self.textColor = textColor;
+    }
+    UIColor *highlightedTextColor = nil;
+    if (self.highlightedTextColorKey && (highlightedTextColor = [[RNThemeManager sharedManager] colorForKey:self.highlightedTextColorKey])) {
+        self.highlightedTextColor = highlightedTextColor;
     }
     UIColor *backgroundColor = nil;
     if (self.backgroundColorKey && (backgroundColor = [[RNThemeManager sharedManager] colorForKey:self.backgroundColorKey])) {

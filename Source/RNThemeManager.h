@@ -23,13 +23,26 @@ extern NSString * const RNThemeManagerDidChangeThemes;
 
 // Requires 2 keys per font entry. The first key's name doesn't matter, but the size key must be suffixed with "Size"
 // ie: @{ @"labelFont" : @"Helvetica", @"labelFontSize" : @15 }
+// If the size key is not specified, the system default will be assumed
 - (UIFont *)fontForKey:(NSString*)key;
+
+// Allows the font size to be provided separately rather than using the themed style
+- (UIFont *)fontForKey:(NSString *)key size:(CGFloat)size;
 
 // Return a UIColor from a hex color stored in theme file
 - (UIColor *)colorForKey:(NSString *)key;
 
 // Return a UIImage for an image name stored in theme file
 - (UIImage *)imageForKey:(NSString *)key;
+
+// Return an int stored in a theme file, using a default value if not found
+- (int)intForKey:(NSString *)key defaultValue:(int)defaultValue;
+
+// Return an float stored in a theme file, using a default value if not found
+- (float)floatForKey:(NSString *)key defaultValue:(float)defaultValue;
+
+// Return an bool stored in a theme file, using a default value if not found
+- (BOOL)boolForKey:(NSString *)key defaultValue:(BOOL)defaultValue;
 
 // Change the theme name, should not include .plist extension
 - (void)changeTheme:(NSString *)themeName;

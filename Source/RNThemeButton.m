@@ -53,9 +53,21 @@
 
 - (void)applyTheme {
     UIFont *font = nil;
-    if (self.fontKey && (font = [[RNThemeManager sharedManager] fontForKey:self.fontKey])) {
-        self.titleLabel.font = font;
+    
+    if (self.fontKey) {
+        // has the fontSize override been provided?
+        if (self.fontSize) {
+            font = [[RNThemeManager sharedManager] fontForKey:self.fontKey size:[self.fontSize floatValue]];
+        }
+        else {
+            font = [[RNThemeManager sharedManager] fontForKey:self.fontKey];
+        }
+        
+        if (font) {
+            self.titleLabel.font = font;
+        }
     }
+    
     UIColor *textColor = nil;
     if (self.textColorKey && (textColor = [[RNThemeManager sharedManager] colorForKey:self.textColorKey])) {
         [self setTitleColor:textColor forState:UIControlStateNormal];

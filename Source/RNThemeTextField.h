@@ -13,6 +13,7 @@
 <RNThemeUpdateProtocol>
 
 @property (nonatomic, strong) NSString *fontKey;
+@property (nonatomic ,strong) NSNumber *fontSize;
 @property (nonatomic, strong) NSString *textColorKey;
 
 @end
