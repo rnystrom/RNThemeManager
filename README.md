@@ -112,8 +112,11 @@ Sorry if that's a little confusing. Here are some pictures.
 <RNThemeUpdateProtocol>
 
 // in -viewDidLoad (remember to removeObserver in -dealloc)
-[[NSNotificationCenter defaultCenter] addObserver:self action:@selector(applyTheme) withObject:nil];
-
+[[NSNotificationCenter defaultCenter] addObserver:self
+                                         selector:@selector(applyTheme)
+                                             name:RNThemeManagerDidChangeThemes
+                                           object:nil];
+                                               
 // in -viewWillAppear (or where you do your layout bits)
 [self applyTheme];
 
